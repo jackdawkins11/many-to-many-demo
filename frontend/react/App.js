@@ -17,10 +17,26 @@ function App({}) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
       }}
     >
+      <button
+        onClick={() => setDialogStep(1)}
+        style={{
+          borderRadius: "20px",
+          padding: "5px 15px",
+          backgroundColor: "blue",
+          color: "white",
+          border: "none",
+          fontSize: "18px",
+          cursor: "pointer",
+          display: dialogStep < 2 ? "none" : "block"
+        }}
+      >
+        Help
+      </button>
       <ListArea />
-      <Dialog step={dialogStep} next={() => setDialogStep(n => n + 1)} />
+      <Dialog step={dialogStep} next={() => setDialogStep((n) => n + 1)} />
     </div>
   )
 }
@@ -145,7 +161,7 @@ function ListArea({}) {
               return {
                 colIdx: rd.colIdx,
                 selectedId: rd.selectedId,
-                associatedIds: [...rd.associatedIds, id]
+                associatedIds: [...rd.associatedIds, id],
               }
             })
           }
@@ -181,7 +197,8 @@ function ListArea({}) {
               isLeft={idx == 0}
               isSelected={
                 relationData != null &&
-                ((relationData.colIdx == idx && relationData.selectedId == item.id) ||
+                ((relationData.colIdx == idx &&
+                  relationData.selectedId == item.id) ||
                   (relationData.colIdx != idx &&
                     relationData.associatedIds.includes(item.id)))
               }
@@ -240,6 +257,7 @@ function ItemDisplay({ item, isLeft, isSelected, onClick }) {
         padding: "15px",
         boxShadow: inHover ? "0 0 1em #aaa" : "0 0 1em #ccc",
         width: "250px",
+        fontFamily: "system-ui",
       }}
       onMouseEnter={(e) => {
         setHover(true)
