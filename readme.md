@@ -6,5 +6,8 @@ It simply displays two simple SQL tables as well as the many-to-many relationshi
 * Start the backend with `mvn spring-boot:run`
 * Proxy requests going to `/rdb-api` on port 80 to `localhost:8080/rdb-api`
 
+### Youtube Video
+[Spring/React Demo](https://www.youtube.com/watch?v=wafeim8Mb5s)
+
 ### Screenshots
 ![](./screenshots/screenshot1.png)
